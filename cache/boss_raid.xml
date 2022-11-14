@@ -2,43 +2,73 @@
 <boss>
 <configs>
 <atualstudio>Cache script by Atualstudio.com</atualstudio>
-<updated>1560604897</updated>
+<updated>1559684094</updated>
 </configs>
 <line>
-<name>Ghost of Peasant Leader</name>
-<level>50</level>
-<status>Alive</status>
-<respawn>-</respawn>
+<name>Varka's Hero Shadith</name>
+<level>80</level>
+<status>Dead</status>
+<respawn>05/06/2019 22:51</respawn>
+</line>
+<line>
+<name>Cherub Galaxia</name>
+<level>79</level>
+<status>Dead</status>
+<respawn>05/06/2019 12:05</respawn>
+</line>
+<line>
+<name>Grave Robber Kim</name>
+<level>52</level>
+<status>Dead</status>
+<respawn>05/06/2019 10:45</respawn>
+</line>
+<line>
+<name>Palatanos of Horrific Power</name>
+<level>75</level>
+<status>Dead</status>
+<respawn>05/06/2019 09:37</respawn>
+</line>
+<line>
+<name>Queen Shyeed</name>
+<level>80</level>
+<status>Dead</status>
+<respawn>04/06/2019 23:37</respawn>
+</line>
+<line>
+<name>Shilen's Messenger Cabrio</name>
+<level>70</level>
+<status>Dead</status>
+<respawn>04/06/2019 22:46</respawn>
+</line>
+<line>
+<name>Varka's Chief Horus</name>
+<level>80</level>
+<status>Dead</status>
+<respawn>04/06/2019 21:46</respawn>
 </line>
 <line>
 <name>Ketra's Chief Brakki</name>
 <level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Verfa</name>
-<level>51</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Varka's Commander Mos</name>
-<level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
+<status>Dead</status>
+<respawn>04/06/2019 20:47</respawn>
 </line>
 <line>
 <name>Ketra's Commander Tayr</name>
 <level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
+<status>Dead</status>
+<respawn>04/06/2019 19:59</respawn>
+</line>
+<line>
+<name>Varka's Commander Mos</name>
+<level>80</level>
+<status>Dead</status>
+<respawn>04/06/2019 19:53</respawn>
 </line>
 <line>
 <name>Ember</name>
 <level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
+<status>Dead</status>
+<respawn>04/06/2019 19:42</respawn>
 </line>
 <line>
 <name>Gordon</name>
@@ -49,30 +79,6 @@
 <line>
 <name>Ketra's Hero Hekaton</name>
 <level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Queen Shyeed</name>
-<level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Varka's Chief Horus</name>
-<level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Varka's Hero Shadith</name>
-<level>80</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Cherub Galaxia</name>
-<level>79</level>
 <status>Alive</status>
 <respawn>-</respawn>
 </line>
@@ -132,12 +138,6 @@
 </line>
 <line>
 <name>Last Lesser Giant Olkuth</name>
-<level>75</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Palatanos of Horrific Power</name>
 <level>75</level>
 <status>Alive</status>
 <respawn>-</respawn>
@@ -228,12 +228,6 @@
 </line>
 <line>
 <name>Roaring Skylancer</name>
-<level>70</level>
-<status>Alive</status>
-<respawn>-</respawn>
-</line>
-<line>
-<name>Shilen's Messenger Cabrio</name>
 <level>70</level>
 <status>Alive</status>
 <respawn>-</respawn>
@@ -497,13 +491,13 @@
 <respawn>-</respawn>
 </line>
 <line>
-<name>Grave Robber Kim</name>
-<level>52</level>
+<name>Deadman Ereve</name>
+<level>51</level>
 <status>Alive</status>
 <respawn>-</respawn>
 </line>
 <line>
-<name>Deadman Ereve</name>
+<name>Verfa</name>
 <level>51</level>
 <status>Alive</status>
 <respawn>-</respawn>
@@ -516,6 +510,12 @@
 </line>
 <line>
 <name>Cursed Clara</name>
+<level>50</level>
+<status>Alive</status>
+<respawn>-</respawn>
+</line>
+<line>
+<name>Ghost of Peasant Leader</name>
 <level>50</level>
 <status>Alive</status>
 <respawn>-</respawn>

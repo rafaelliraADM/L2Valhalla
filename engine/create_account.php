@@ -1,6 +1,8 @@
 <?php
 
-if(!isset($indexing)) { exit; }
+if(!$indexing) { exit; }
+
+if($funct['regist'] != 1) { fim($LANG[40003], 'ERROR', './'); }
 
 $key = isset($_POST['key']) ? vCode($_POST['key']) : '';
 if($key != $_SESSION['key']) { fim('', 'SESSION', './?page=register'); }
@@ -86,7 +88,7 @@ if($cofemail == 1) {
 	
 	if($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
 		
-		$contentEmail = $LANG[12113]."<ul style='margin-bottom:2px; padding-bottom:0;'><li><b>Login:</b> ".$login."</li><li><b>E-mail:</b> ".$email."</li></ul><div style='margin: 10px 0 0 0; padding:10px; background:#f5f5f5; border:1px solid #d8d8d8; border-radius:5px; display:table;'><a href='http://".$server_url."/?page=register_confirm&acc=".$login."&code=".$confirmCode."' target='_blank'>http://".$server_url."/?page=register_confirm&acc=".$login."&code=".$confirmCode."</a></div>";
+		$contentEmail = $LANG[12113]."<ul style='margin-bottom:2px; padding-bottom:0;'><li><b>Login:</b> ".$login."</li><li><b>E-mail:</b> ".$email."</li></ul><div style='margin: 10px 0 0 0; padding:10px; background:#f5f5f5; border:1px solid #d8d8d8; border-radius:5px; display:table;'><a href='http://".$panel_url."/?engine=register_confirm&acc=".$login."&code=".$confirmCode."' target='_blank'>http://".$panel_url."/?engine=register_confirm&acc=".$login."&code=".$confirmCode."</a></div>";
 
 		require('private/classes/classEmail.php');
 		

@@ -48,14 +48,14 @@ $error = 0;
 
 for($i=0, $c=count($checkEmail); $i < $c; $i++) {
 	$code = md5($checkEmail[$i]['login'].rand(100,999).$uniqueKey);
-	$contentEmail .= "<ul style='margin-bottom:2px; padding-bottom:0;'><li><b>Login:</b> ".$checkEmail[$i]['login']."</li></ul><div style='margin: 10px 0 0 0; padding:10px; background:#f5f5f5; border:1px solid #d8d8d8; border-radius:5px; display:table;'><a href='http://".$server_url."/?page=forgot_confirm&acc=".$checkEmail[$i]['login']."&code=".$code."' target='_blank'>http://".$server_url."/?page=forgot_confirm&acc=".$checkEmail[$i]['login']."&code=".$code."</a></div><br />";
+	$contentEmail .= "<ul style='margin-bottom:2px; padding-bottom:0;'><li><b>Login:</b> ".$checkEmail[$i]['login']."</li></ul><div style='margin: 10px 0 0 0; padding:10px; background:#f5f5f5; border:1px solid #d8d8d8; border-radius:5px; display:table;'><a href='http://".$panel_url."/?page=forgot_confirm&acc=".$checkEmail[$i]['login']."&code=".$code."' target='_blank'>http://".$panel_url."/?page=forgot_confirm&acc=".$checkEmail[$i]['login']."&code=".$code."</a></div><br />";
 	$insert_code = Account::insertForgotCode($checkEmail[$i]['login'], $code);
 	if(!$insert_code) { $error += 1; }
 }
 
 if(count($checkEmail) > 1) {
 	$codeall = md5($email.rand(100,999).$uniqueKey);
-	$contentEmail .= "<br />".$LANG[12112]."<div style='margin: 10px 0 0 0; padding:10px; background:#f5f5f5; border:1px solid #d8d8d8; border-radius:5px; display:table;'><a href='http://".$server_url."/?page=forgot_confirm&acc=all_".urlencode(strtolower($email))."&code=".$codeall."' target='_blank'>http://".$server_url."/?page=forgot_confirm&acc=all_".urlencode(strtolower($email))."&code=".$codeall."</a></div><br />";
+	$contentEmail .= "<br />".$LANG[12112]."<div style='margin: 10px 0 0 0; padding:10px; background:#f5f5f5; border:1px solid #d8d8d8; border-radius:5px; display:table;'><a href='http://".$panel_url."/?page=forgot_confirm&acc=all_".urlencode(strtolower($email))."&code=".$codeall."' target='_blank'>http://".$panel_url."/?page=forgot_confirm&acc=all_".urlencode(strtolower($email))."&code=".$codeall."</a></div><br />";
 	$insert_codeall = Account::insertForgotCode('all_'.strtolower($email), $codeall);
 	if(!$insert_codeall) { $error += 1; }
 }

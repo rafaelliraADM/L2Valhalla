@@ -28,8 +28,12 @@ if($login) {
 	
 	$_SESSION['acc'] = $user_login;
 	$_SESSION['ses'] = md5($_SERVER['HTTP_USER_AGENT'].$uniqueKey.'logged');
-
-	fim('', 'OK', './');
+	
+	if(isset($_GET['fromsite'])) {
+		fim('', 'OK', './ucp/');
+	} else {
+		fim('', 'OK', './');
+	}
 
 } else {
 	

@@ -1,9 +1,89 @@
 <?php
 
-$LANG[40000] = "User Control Panel";
-$LANG[40001] = "Statistics";
-$LANG[40002] = "Help Us Voting";
+$LANG[40000] = "<br /><br />Each ".$coinName." costs a certain value, described below, with automatic ".$buyCoins['bonus_percent'][1]."% bonus for orders over ".$buyCoins['bonus_count'][1]." ".$coinName."'s, ".$buyCoins['bonus_percent'][2]."% for purchases above ".$buyCoins['bonus_count'][2]." ".$coinName."'s and ".$buyCoins['bonus_percent'][3]."% for purchases above ".$buyCoins['bonus_count'][3]." ".$coinName."'s. Example: You pay for ".$buyCoins['bonus_count'][1]." and receives ".intval($buyCoins['bonus_count'][1]+(($buyCoins['bonus_count'][1]*$buyCoins['bonus_percent'][1])/100))."; pays for ".($buyCoins['bonus_count'][2]+50)." and receives ".intval(($buyCoins['bonus_count'][2]+50)+((($buyCoins['bonus_count'][2]+50)*$buyCoins['bonus_percent'][2])/100))."; pays for ".($buyCoins['bonus_count'][3]+200)." and receives ".intval(($buyCoins['bonus_count'][3]+200)+((($buyCoins['bonus_count'][3]+200)*$buyCoins['bonus_percent'][3])/100)).".";
+$LANG[40001] = "List of services";
+$LANG[40002] = "List of packs";
+$LANG[40003] = "Unavailable in moment!";
+$LANG[40004] = "For your character in-game";
+$LANG[40005] = "Your <b>".$coinName."'s</b> will be converted to <b>".$coinGame."'s</b> and inserted into your inventory and can be used in the game to take advantage of benefits and resources.";
+$LANG[40006] = "To another account";
+$LANG[40007] = "The account of the receiver character receives <b>".$coinName."'s</b> and he can use them in user panel.";
+$LANG[40008] = "Yes";
+$LANG[40009] = "No";
+$LANG[40010] = "Gallery";
+$LANG[40011] = "Upload Screenshot";
+$LANG[40012] = "Upload Video";
+$LANG[40013] = "My Uploads";
+$LANG[40014] = "Send screenshots to our gallery! Upload screenshot using the form below.";
+$LANG[40015] = "You can send the amount you want, but only one at a time.";
+$LANG[40016] = "Allowed formats: JPG/JPEG, PNG and BMP.";
+$LANG[40017] = "Maximum size in bytes for screenshot: 5 MB.";
+$LANG[40018] = "Send";
+$LANG[40019] = "Send videos to our gallery! Upload the video to YouTube and enter his link in the camp below.";
+$LANG[40020] = "The video must be hosted on Youtube.com and available to all.";
+$LANG[40021] = "It isn't allowed pornographic content, nudity, racism or offenses.";
+$LANG[40022] = "Insert a valid screenshot!";
+$LANG[40023] = "The image exceeds the size allowed!";
+$LANG[40024] = "Is only allowed image JPG/JPEG, PNG or BMP!";
+$LANG[40025] = "The image has width greater than";
+$LANG[40026] = "The image has height greater than";
+$LANG[40027] = "Failed to send image! Please inform the administrator and try again later.";
+$LANG[40028] = "You inserted a long link! (Maximum 255 characters)";
+$LANG[40029] = "Invalid Link! Please enter the correct link!";
+$LANG[40030] = "Sending done successfully! However, it will only be publicly available after administrator's approval.";
+$LANG[40031] = "This video has already been sent to the gallery!";
+$LANG[40032] = "Below are shown the videos and screenshots sent to you.<br />You need administrator approval for them to be displayed publicly.";
+$LANG[40033] = "You haven't sent any media.";
+$LANG[40034] = "In approval";
+$LANG[40035] = "View Gallery";
+$LANG[40036] = "No media in the gallery.";
+$LANG[40037] = "Transfers Made";
+$LANG[40038] = "Transfers to character in-game (conversion of <b>".$coinName."</b> to <b>".$coinGame."</b>)";
+$LANG[40039] = "Transfer of <b>".$coinName."</b> to another account";
+$LANG[40040] = "No transfer effected.";
+$LANG[40041] = "Are you sure you want to delete this item from the gallery?";
+$LANG[40042] = "This was not sent by you!";
+$LANG[40043] = "Back";
 $LANG[40044] = "Your security key has expired! We will load the page and please try again.";
+$LANG[10995] = "For best security, add a suffix to your login. Your login will be <span id='finalLogin'></span>.";
+$LANG[10996] = "I don't want it";
+$LANG[10997] = "Suffix";
+$LANG[12977] = "You can only register from:";
+$LANG[12067] = "Complete the fields below to register a new account.";
+$LANG[12068] = "Account created successfully! Welcome!";
+$LANG[12069] = "Account created successfully! You have 24 hours to confirm it!<br />An e-mail has been sent to:";
+$LANG[12070] = "The passwords entered do not match!";
+$LANG[12071] = "You have exceeded the character limit allowed!";
+$LANG[12072] = "There is already an account with this login!";
+$LANG[12080] = "Account successfully confirmed! Have fun!";
+$LANG[12081] = "An error occurred when confirming your account!";
+$LANG[12083] = "Confirm E-mail";
+$LANG[29004] = "Suffix disabled";
+$LANG[12010] = "Repeat E-mail";
+$LANG[12045] = "Only letters and numbers are allowed. Do not use special characters or spacing.";
+$LANG[12113] = "Hello!<br /><br />Your e-mail has been used in the registration of an account on our server. If you held this register, click the link below or copy and paste in the browser, otherwise ignore this e-mail.<br /><br />Account data:<br /><br />";
+$LANG[29008] = "My Account";
+$LANG[29009] = "Register date";
+$LANG[29010] = "Welcome to ";
+$LANG[12043] = "Forgot your password? Type in the box below the e-mail you used to register the account. Send you instructions on how to recover.";
+$LANG[12059] = "Enter e-mail!";
+$LANG[12060] = "Please enter a valid e-mail!";
+$LANG[12061] = "There is no account with this e-mail!";
+$LANG[12110] = "Hello!<br /><br />There is an registered account on our server with your e-mail address.<br />Recently a request for password recovery was performed. If you made this request, click on the link below or copy and paste in the browser, otherwise ignore this e-mail.<br /><br />Account data:<br /><br />";
+$LANG[12111] = "Hello!<br /><br />There are some accounts on our server with your registered e-mail address.<br />Recently a request for password recovery was performed. If you made this request, click on the highlighted link their account you want to change the password or copy and paste in the browser, otherwise ignore this e-mail.<br /><br />Accounts data:<br /><br />";
+$LANG[12112] = "If you want to change the password of any accounts over at once, click the link below.";
+$LANG[12040] = "Recover Account";
+$LANG[12046] = "Code expired or nonexistent!";
+$LANG[12044] = "Fill in the fields below with the new account password.";
+$LANG[12050] = "Change";
+$LANG[12015] = "and";
+$LANG[12016] = "Time";
+$LANG[12012] = "Members";
+$LANG[12064] = "Below are displayed all players who are or already been heroes.";
+$LANG[12065] = "Players who have won the last Grand Olympiad and are currently heroes";
+$LANG[12066] = "Participants of the Grand Olympiad and their positions in the ranking.";
+$LANG[12029] = "Dead";
+$LANG[12030] = "Alive";
 $LANG[30500] = "This ranking was updated in";
 $LANG[30501] = "at";
 $LANG[30502] = "Below are shown the players with more points PvP (Player vs Player).";
@@ -11,105 +91,8 @@ $LANG[30503] = "Below are shown the players with more points PK (Player Killer).
 $LANG[30504] = "Below the most prestigious clans are displayed.";
 $LANG[30505] = "Below are shown the players more time online.";
 $LANG[30506] = "Wait a few seconds and reload the page.";
-$LANG[29000] = "404 - Page Not Found";
-$LANG[29001] = "The page you are trying to access is unavailable or doesn't exist!";
-$LANG[29002] = "Follow Us!";
-$LANG[29003] = "Access the user panel to check the methods and more information.";
-$LANG[29004] = "Suffix disabled";
-$LANG[29005] = "Reputation";
-$LANG[29006] = "Online Time";
-$LANG[29007] = "Character";
-$LANG[29008] = "My Account";
-$LANG[29009] = "Register date";
-$LANG[29010] = "Welcome to ";
-$LANG[10995] = "For best security, add a suffix to your login. Your login will be <span id='finalLogin'></span>.";
-$LANG[10996] = "I don't want it";
-$LANG[10997] = "Suffix";
-$LANG[20000] = "You receive <b>".$coinPer." ".$coinName."'s</b> a cada <b>".$coinCur." ".number_format($coinCos, 2, ',', '')."</b> donated.";
-$LANG[20001] = "Wait...";
-$LANG[12977] = "You can only register and download from:";
-$LANG[10999] = "Grand Opening";
-$LANG[11000] = "View more news";
-$LANG[11001] = "Server Files";
-$LANG[11002] = "
-
-
-<h2>Information</h2>
-Server time: UTC -3<br />
-Server Chronicles: Interlude<br />
-<b>Custom Armors/Weapons S</b><br />
-Armor: Grade S and Custom Sets<br />
-Custom weapons and armor sets<br />
-5 new custom raidboss jewels.<br />
-<br />
-Sub-Class free<br />
-Noblesse drop Raid Boses<br />
-Donates Does not influence balance<br />
-Geodata and Pathnodes 100%<br />
-Auto Learn Skills<br />
-Auto loot - Automatic pick up (except raid's drops)<br />
-Events Automatics: TVT/CTF/DM<br />
-Clan Skills Selling - Double click in scroll for learn skills ( Free )<br />
-Custom Cancellation: Buffs restored after 10 seconds<br />
-
-
-<hr />
-
-<h2>Rates</h2>
-Experience (EXP) x4000<br />
-Skill Points (SP) x5000<br />
-Adena x1000<br />
-Party: x200<br />
-Drop: x100<br />
-PvP Server Interlude <br />
-<hr />
-
-<h2>Enchants</h2>
-Safe Enchant +7<br />
-Max. Enchant Weapon +25<br />
-Max. Enchant Armor/Jewels +25<br />
-Chance Scroll Normal: 50%<br />
-Chance Scroll Blessed: 50%<br />
-
-<hr />
-
-<h2>Buffs</h2>
-Buff Slot 30 + 4 (Divine Inspiration)<br />
-All buffs in NPC <br />
-Buff time 10 hours<br />
-HS Buffs Free in NPC Buffer<br />
-
-<hr />
-
-<h2>Clan/Siege</h2>
-
-
-Only 2 Clan per Ally <br />
-Royal Guards<br />
-Max 40 Players in Clan<br />
-Rune/Goddard Siege 7 in 7 Days<br />
-Aden/Giran Siege 14 in 14 Days<br />
-Sieges Awarded<br />
-Custom Siege: Aden/Giran/Rune/Goddard<br />
-Awards Castles: Giran and Aden<br />
-Awards Scroll Of Odin<br />
-Special: Siege Dion Castle<br<br />
-Armors: (Tier 1: Titanium, Dread) (Tier 2: Dynasty) (Tier 3: Rykros)<br />
-Weapons: (Tier 1: Unique) (Tier 2: Dynasty) (Tier 3: Legendary)<br />
-Accessories: Up to 30 Accessories with unique stats.<br />
-Dyes-Tattoos: Custom Dyes-Tattoos with special stats.<br<br />
-<hr />
-
-
-<h2>Areas Farm</h2>
-Cave of Trials <br />
-Cemitery / Forbiten Gateway<br />
-
-<hr />
-
-
-
-";
+$LANG[12999] = "Current Heroes";
+$LANG[12025] = "Historical Heroes";
 $LANG[11003] = "Clan Owner";
 $LANG[11004] = "Clan Leader";
 $LANG[11005] = "Alliance";
@@ -118,134 +101,215 @@ $LANG[11007] = "Attacks";
 $LANG[11008] = "Defenders";
 $LANG[11011] = "Tax";
 $LANG[11014] = "Change E-mail";
-$LANG[11015] = "Please check your internet connection. The page is taking too long to respond.";
-$LANG[11017] = "Security Code";
-$LANG[11018] = "Please fill in the code below, for security reasons.";
-$LANG[12981] = "This e-mail is already used by another user!";
-$LANG[12982] = "The e-mail cannot exceed 50 characters!";
-$LANG[12983] = "Please enter a valid e-mail!";
 $LANG[12984] = "The entered e-mail are not equal!";
 $LANG[12985] = "To change the e-mail by filling out the form below by entering the new e-mail. You need to enter it twice to prevent future disorders due to typos.";
 $LANG[12986] = "Current e-mail";
 $LANG[12987] = "Repeat e-mail";
 $LANG[12988] = "New e-mail";
-$LANG[11979] = "Fill in the captcha correctly!";
-$LANG[11990] = "Incorrect data!";
-$LANG[11998] = "Want your screenshot or video to appear in our gallery? <a href='?page=support'>Send to us!</a>";
-$LANG[12991] = "read more";
-$LANG[12994] = "I accept all the rules.";
-$LANG[12995] = "View all";
-$LANG[12996] = "Informations";
-$LANG[12998] = "Like our <a href='".$facePage."' target='_blank'>facebook page!</a>";
-$LANG[12999] = "Current Heroes";
-$LANG[13001] = "News";
-$LANG[13002] = "See more";
-$LANG[13004] = "Back";
-$LANG[13005] = "Support";
-$LANG[12004] = "To register you must agree with the rules!";
-$LANG[12010] = "Repeat E-mail";
-$LANG[12011] = "Leader";
-$LANG[12012] = "Members";
-$LANG[12013] = "Name";
-$LANG[12014] = "day";
-$LANG[12015] = "and";
-$LANG[12016] = "Time";
-$LANG[12019] = "Don't have account?";
-$LANG[12020] = "Forgot your password?";
-$LANG[12021] = "logged in as";
-$LANG[12022] = "Change Password";
-$LANG[12023] = "Logout";
-$LANG[12025] = "Historical Heroes";
-$LANG[12026] = "Gallery";
-$LANG[12027] = "view more";
-$LANG[12028] = "This site was developed by Atualstudio";
-$LANG[12029] = "Dead";
-$LANG[12030] = "Alive";
-$LANG[12031] = "What you want to do?";
-$LANG[12032] = "Register";
-$LANG[12034] = "Recover";
-$LANG[12035] = "To change password, login is required.";
-$LANG[12036] = "Enter login and current password of the account you want to change the password.";
-$LANG[12037] = "Current Password";
-$LANG[12038] = "What you want to download?";
-$LANG[12039] = "Donations";
-$LANG[12040] = "Recover Account";
-$LANG[12041] = "Follow the instructions sent to e-mail";
-$LANG[12042] = "If you can not find them, check the \"spam folder\" or \"trash\" because your mail server can confuse us with a spammer.";
-$LANG[12043] = "Forgot your password? Type in the box below the e-mail you used to register the account. Send you instructions on how to recover.";
-$LANG[12044] = "Fill in the fields below with the new account password.";
-$LANG[12045] = "Only letters and numbers are allowed. Do not use special characters or spacing.";
-$LANG[12046] = "Code expired or nonexistent!";
-$LANG[12047] = "New Password";
-$LANG[12048] = "Repeat Password";
-$LANG[12049] = "Password";
-$LANG[12050] = "Change";
-$LANG[12051] = "Please enter a password!";
-$LANG[12053] = "The passwords entered in the \"Password\" and \"Repeat Password\" fields are not equal!";
-$LANG[12055] = "Sorry, an error has occured! Please try again.";
-$LANG[12056] = "Operation was successful!";
-$LANG[12057] = "Fill in the security code correctly!";
-$LANG[12058] = "Fill out all fields of the form!";
-$LANG[12059] = "Enter e-mail!";
-$LANG[12060] = "Please enter a valid e-mail!";
-$LANG[12061] = "There is no account with this e-mail!";
-$LANG[12062] = "The gallery is still empty!";
-$LANG[12063] = "No news found!";
-$LANG[12064] = "Below are displayed all players who are or already been heroes.";
-$LANG[12065] = "Players who have won the last Grand Olympiad and are currently heroes";
-$LANG[12066] = "Participants of the Grand Olympiad and their positions in the ranking.";
-$LANG[12067] = "Complete the fields below to register a new account.";
-$LANG[12068] = "Account created successfully! Welcome!";
-$LANG[12069] = "Account created successfully! You have 24 hours to confirm it!<br />An e-mail has been sent to:";
-$LANG[12070] = "The passwords entered do not match!";
-$LANG[12071] = "You have exceeded the character limit allowed!";
-$LANG[12072] = "There is already an account with this login!";
 $LANG[12073] = "Incorrect e-mail format!";
 $LANG[12074] = "There is already an account with this email!";
 $LANG[12075] = "An error occurred while sending the confirmation e-mail!<br />Please try again.";
 $LANG[12076] = "Sorry, an error occured!";
+$LANG[12041] = "Follow the instructions sent to e-mail";
+$LANG[12042] = "If you can not find them, check the \"spam folder\" or \"trash\" because your mail server can confuse us with a spammer.";
+$LANG[12114] = "Hello!<br /><br />There is an registered account on our server with your e-mail.<br />Recently a request for change of address was performed. If you made this request and agree that the account will be transferred to the new e-mail, click the link below or copy and paste in your browser, otherwise ignore this e-mail.<br /><br />";
+$LANG[39000] = "User Control Panel";
+$LANG[39001] = "Pending";
+$LANG[39002] = "Paid";
+$LANG[39003] = "Delivered";
+$LANG[39004] = "Canceled";
+$LANG[39005] = "The page you are trying to access doesn't exist.";
+$LANG[39006] = "You must select a valid character and at least one item to make a purchase!";
+$LANG[39007] = "To access the panel, enter the required data.";
+$LANG[39008] = "World";
+$LANG[39009] = "Add";
+$LANG[39010] = "Purchase";
+$LANG[39011] = "Carried Donations";
+$LANG[39012] = "Settings";
+$LANG[39013] = "Click the button below to make the payment.";
+$LANG[39014] = "Service";
+$LANG[39015] = "Cost";
+$LANG[39016] = "Selected character";
+$LANG[39017] = "Run";
+$LANG[39018] = "Click again to confirm";
+$LANG[39019] = "Enables you to change the nickname color of your character.";
+$LANG[39020] = "Enter the code of the color below. If you don't know any code, <a target='_blank' href='http://www.colorpicker.com/'>click here</a>.";
+$LANG[39021] = "Color";
+$LANG[39022] = "Enables you to change the title color of your character.";
+$LANG[39023] = "Completely removes the karma of the selected character.";
+$LANG[39024] = "Just click the button below for the procedure to be performed.";
+$LANG[39025] = "Resets the amount of pk points of the selected character.";
+$LANG[39026] = "By clicking the button below the selected player will have 0 points PK (Player Kill).";
+$LANG[39027] = "Enables you to change the name of the selected character.";
+$LANG[39028] = "Enter the new name and click the button below.";
+$LANG[39029] = "Repeat nickname";
+$LANG[39030] = "Enables you to change the clan name of the selected character.";
+$LANG[39031] = "Note: Only the clan leader can change the name.";
+$LANG[39032] = "Repeat name";
+$LANG[39033] = "Changes the sex/gender of the selected character.";
+$LANG[39034] = "Select the gender and confirm by clicking the button below.";
+$LANG[39035] = "New gender";
+$LANG[39036] = "Male";
+$LANG[39037] = "Female";
+$LANG[39038] = "Allows transfer the selected character to another account.";
+$LANG[39039] = "You can only transfer to accounts that use the same e-mail. Select the account and confirm by clicking the button below.";
+$LANG[39040] = "No account found";
+$LANG[39041] = "Category";
+$LANG[39042] = "Select the items you want to buy.";
+$LANG[39043] = "No items found.";
+$LANG[39044] = "Account information";
+$LANG[39045] = "Last access to panel";
+$LANG[39046] = "Characters";
+$LANG[39047] = "Title";
+$LANG[39048] = "Created in";
+$LANG[39049] = "Base Level";
+$LANG[39050] = "Gender";
+$LANG[39051] = "Alliance";
+$LANG[39052] = "Noble";
+$LANG[39053] = "Online Time";
+$LANG[39054] = "Select a valid class!";
+$LANG[39055] = "This character currently has the status hero until ";
+$LANG[39056] = "This character currently has the status vip until ";
+$LANG[39057] = "This character currently has the status aio until ";
+$LANG[39058] = "There is no package with this ID!";
+$LANG[39059] = "All";
+$LANG[39060] = "All package items";
+$LANG[39061] = "Moves the selected character to a safe location.";
+$LANG[39062] = "This service is essential if you can't open the game due to critical errors caused by incomplete installation of Lineage 2.";
+$LANG[39063] = "Sets the character selected as noble.";
+$LANG[39064] = "A noble has skills and special advantages in-game, such as permission to participate in exclusive competitions and use special items.";
+$LANG[39065] = "Grants the hero status to the selected character.";
+$LANG[39066] = "He will receive an aura, a number of special skills and can enjoy several advantages in-game. Just select below the desired period. If it already is hero, the selected period will be added to the one he already has.";
+$LANG[39067] = "Period";
+$LANG[39068] = "Change the base class of the selected character.";
+$LANG[39069] = "All skills, dyes and shortcuts will be removed and it can be part of a new race, according to the selected class.";
+$LANG[39070] = "Vip status grants to the selected character.";
+$LANG[39071] = "You can enjoy several advantages in-game. Just select below the desired period. If he already has VIP status, the selected period will be added to the one he already has.";
+$LANG[39072] = "months";
+$LANG[39073] = "month";
+$LANG[39074] = "The selected account has already the maximum number of characters!";
+$LANG[39075] = "You can't proceed because the character already has a class as subclass!";
+$LANG[12004] = "To proceed you must agree to the terms!";
+$LANG[20001] = "Wait...";
+$LANG[11015] = "Please check your internet connection. The page is taking too long to respond.";
+$LANG[11016] = "Sorry, an error has occured! Please try again.";
+$LANG[12008] = "Select";
+$LANG[12013] = "Name";
+$LANG[12011] = "Leader";
+$LANG[12014] = "day";
+$LANG[12019] = "Don't have account?";
+$LANG[12020] = "Forgot your password?";
+$LANG[12023] = "Exit";
+$LANG[12028] = "This site was developed by Atualstudio";
+$LANG[12034] = "Recover";
+$LANG[12037] = "Current Password";
+$LANG[12039] = "Donations";
+$LANG[12047] = "New Password";
+$LANG[12048] = "Repeat Password";
+$LANG[12049] = "Password";
+$LANG[12055] = "Failed! Please try again.";
+$LANG[12056] = "Operation was successful!";
+$LANG[12057] = "Fill in the security code correctly!";
+$LANG[12058] = "Fill out all fields of the form!";
 $LANG[12077] = "Register";
-$LANG[12080] = "Account successfully confirmed! Have fun!";
-$LANG[12081] = "An error occurred when confirming your account!";
-$LANG[12083] = "Confirm E-mail";
-$LANG[12084] = "You need to get in contact with our team?";
-$LANG[12085] = "Our contact e-mail is:";
-$LANG[12086] = "This is the only e-mail for communication between the staff and the players. If you are being \"attended\" through <b>another e-mail</b> by someone who claims to be our team, be aware that <b>WE ARE NOT</b>! Is someone trying to benefit illegally.";
-$LANG[12087] = "You can also contact us by:";
-$LANG[12088] = "Forum";
-$LANG[12089] = "or";
-$LANG[12090] = "To change the password, complete the form below by entering the current password and the new password. You must enter the new password twice to avoid future problems due to typos.";
+$LANG[12090] = "To change your data, fill the fields below. If you want to change the password, you must enter the new password twice to avoid future problems due to typing errors.";
 $LANG[12091] = "Current password incorrect!";
 $LANG[12092] = "The passwords entered in the \"Password\" and \"Repeat Password\" fields are not equal!";
 $LANG[12093] = "Your password cannot exceed 16 characters!";
-$LANG[12094] = "Password changed successfully!";
-$LANG[12095] = "Whenever you try to log appears a Critical Error? If yes, your character can be in a location with some failure. Select and confirm it below, it will be sent to the correct location.";
-$LANG[12096] = "NOTE: The procedure does not work if PK, online, or has participated in a battle lately.";
-$LANG[12097] = "The character recently participated in a battle!";
 $LANG[12098] = "The character is PK!";
 $LANG[12099] = "The character is Online!";
 $LANG[12100] = "No character found!";
-$LANG[12101] = "Select the character";
-$LANG[12102] = "Collaborate with the server and earn rewards!";
-$LANG[12103] = "By donating you are helping to keep the server online, with quality and always updated.";
-$LANG[12104] = "You get <b>".$coinName."</b>'s as a reward for collaboration that can be redeemed for various items in game.";
-$LANG[12105] = "Your donation can be made through the <b>Pagseguro</b> or <b>PayPal</b>. Follows the data below.";
-$LANG[12106] = "Why donate?";
-$LANG[12107] = "WAYS TO DONATE";
-$LANG[12108] = "Rules";
-$LANG[12109] = "01. Always treat all Administrators, Game Masters and members of management with respect. Any act of disrespect to the administration, regardless of the medium, result in punishment.<br /><br />
-02. It is forbidden to impersonate (pretend to be) any member of the administration.<br /><br />
-03. Advertising, comments or suggestions of any other Lineage server is prohibited in any game chat or other media connected to us.<br /><br />
-04. It is forbidden to use programs that interact with the Lineage 2, exploits or take advantage of any problems found in the game, in the forum or website that will benefit you in relation to other players. If a player finds a bug (problem/fault) in the game, forum or site shall immediately inform the administration.<br /><br />
-05. Never ask levels, items, adena, teleport or any benefit to any member of the administration because you will not be answered.<br /><br />
-06. Your account is not transferable, it means that you are responsible for your own safety in the game. Never give your password to anyone else, including the administration. Make sure that the computer used to play it safe. Never run extra interactivity programs with your Lineage 2, which was not provided by management, as they may contain viruses and keyloguers that will result in the theft of your user accounts and / or items. The administration is not responsible for any theft, dropped or destroyed items. The administration ensures complete integrity and server security and therefore are not possible invasions hacks to steal items or accounts directly on the server, site or forum, in other words, any type of theft are caused by carelessness or misuse of users.<br /><br />
-07. All user data (its accuracy and maintenance) are the sole responsibility of the user. Take care of your data and keep your active e-mail account it is necessary to recover your password if you forget it. The administration is not responsible for data forgotten, lost, deleted or canceled for any reason.<br /><br />
-08. It is forbidden to offend other players with profanity, derogatory and offensive names, pornographic offenses, racist and others in Global Chat and any other media provided by our team. In in-game chats use the command /block for not to read unwanted messages. Use the hero chat with wisdom because it involves reading the entire server. Also the use of any chat to incite or manipulate the players the server against the administration is prohibited.<br /><br />
-09. Players who accuse without evidence the administration will be severely punished. The administration will not allow bad players tarnish the image of the server because they are bad losers.<br /> <br />
-10. Any action in the game that the administration deems anti-gambling (actions considered inappropriate or bad character) will also result in penalties such as: losing on purpose in the Grand Olympiad to give points to another character; disrupt or attempt to deceive in any way automatic events or made by management; Try to fool other players offering false items.<br /><br />
+$LANG[16000] = "Enter a name with only letters and numbers without spaces or special characters! (a-zA-Z0-9)";
+$LANG[16001] = "The name can't exceed 16 characters!";
+$LANG[16002] = "last login";
+$LANG[16003] = "Created in";
+$LANG[16004] = "There has been no";
+$LANG[16005] = "Last IP";
+$LANG[10003] = "Change data";
+$LANG[10010] = "Services";
+$LANG[10011] = "Buy";
+$LANG[10013] = "Transfer";
+$LANG[10015] = "My Orders";
+$LANG[10024] = "Select a character, amount and payment method!";
+$LANG[10025] = "Invalid amount! Try another.";
+$LANG[10026] = "Invalid character! Try another.";
+$LANG[10027] = "Invalid payment method! Try another.";
+$LANG[10029] = "Protocol";
+$LANG[10030] = $coinName_mini."'s Purchased";
+$LANG[10031] = $coinName_mini."'s Bonus";
+$LANG[10032] = "Total receivables";
+$LANG[10033] = "Character that will receive";
+$LANG[10034] = "Amount to be paid";
+$LANG[10035] = "Date of order";
+$LANG[10036] = "Last status update";
+$LANG[10037] = "Payment Method";
+$LANG[10038] = "Status";
+$LANG[10039] = "Still no";
+$LANG[10040] = "Pay";
+$LANG[10042] = "Pay now";
+$LANG[10045] = "<b>Important:</b> Times are in accordance with the Data Center server.";
+$LANG[10046] = "<b>This order does not exist or is not yours. Check your <a href=\"./?module=donate&page=orders\">orders</a>.</b>";
+$LANG[10047] = "Make New Request";
+$LANG[10052] = "Invoice";
+$LANG[10053] = "The ".$server_name." is a required payment free server so that everyone can enjoy the Lineage II world for free, but the server has some expenses. When buying ".strtolower($coinName_mini)."'s you will be helping the ".$server_name." to grow and maintain all services available at all times.<br /><br />You can purchase many items in the game and enjoy some alternative services on our website using ".$coinName."'s.";
+$LANG[10054] = "I have read and accepted the Terms to buy ".strtolower($coinName_mini)."'s above";
+$LANG[10055] = "Enter the required data below and click \"Place Order\". A new order will be carried out and a window will open with the invoice for payment. The same order may be accessed later in the page of <a href=\"?module=donate&page=orders\">My Orders</a>.";
+$LANG[10056] = "Character";
+$LANG[10057] = "Desired amount";
+$LANG[10058] = "Total value";
+$LANG[10059] = "Payment Method";
+$LANG[10060] = "bonus";
+$LANG[10061] = "Place Order";
+$LANG[10064] = "Please check your internet connection. The page is taking too long to respond.";
+$LANG[10065] = "Sorry, an error has occured! Please try again.";
+$LANG[10066] = "Select the character and run any of the services available.";
+$LANG[10068] = "Balance";
+$LANG[10070] = "Price";
+$LANG[10088] = "Select the character!";
+$LANG[10089] = "This character has no clan!";
+$LANG[10095] = "New name";
+$LANG[10097] = "You doesn't have enough ".strtolower($coinName_mini)."'s!";
+$LANG[10099] = "Please repeat the name correctly!";
+$LANG[10100] = "You aren't the leader of this clan!";
+$LANG[10104] = "This character is not PK!";
+$LANG[10115] = "Value";
+$LANG[10116] = "Date";
+$LANG[10117] = "Last update";
+$LANG[10118] = "Pay. method";
+$LANG[10119] = "order(s) found(s)";
+$LANG[10120] = "Delete";
+$LANG[10121] = "Cancel";
+$LANG[10122] = "Are you sure you want to delete the order protocol";
+$LANG[10124] = "You have not made any <a href=\"./?module=donate&page=add\">order</a>";
+$LANG[10125] = "This order was not made for you!";
+$LANG[10126] = "You can't delete this order!";
+$LANG[10163] = "If you want to transfer ".strtolower($coinName_mini)."'s, fill in the fields below.";
+$LANG[10165] = "Cantidad de ".strtolower($coinName_mini)."'s a transferir.";
+$LANG[10166] = "Character name that will receive the ".strtolower($coinName_mini)."'s.";
+$LANG[10167] = "Receiver";
+$LANG[10168] = "Amount";
+$LANG[10169] = "For security reasons, please repeat the amount and receiver:";
+$LANG[10170] = "Transfer";
+$LANG[10171] = "The amounts entered do not match! Please correct and try again.";
+$LANG[10172] = "The inserted receiver names do not match! Please correct and try again.";
+$LANG[10174] = "Unable to transfer at this time why";
+$LANG[10175] = "is online!";
+$LANG[11979] = "Fill in the captcha correctly!";
+$LANG[11990] = "Incorrect data!";
+$LANG[11999] = "Changes in clans can take effect only after a restart server";
+$LANG[12000] = "No character was found with that name!";
+$LANG[14000] = "Terms to buy ".$coinName_mini."'s";
+$LANG[14001] = "When buying, be aware that you have no privilege before the other players. All are subject to the same rules and punishments.<br /><br />
+We are not responsible for the security and fate of the item after it is delivered to your character. We will not refund anything if you lose in game or some carelessness with the security of your account.<br /><br />
+We will not, under any circumstances, refund the purchase money, however, we guarantee the delivery of which was purchased at your selected character within the terms and conditions set forth in the following.<br /><br />
+<b>Deadlines and Delivery</b><br /><br />
+The deadline for delivery varies depending on the chosen mode of payment and may be a few minutes for purchases made through online transfer or credit card, or up to 72 hours for purchases made through a bank.<br /><br />
+We will receive automatically from intermediaries sites notifications about the transaction. There is no need for payment confirmation via e-mail or sending vouchers, our system is fully automatic.<br /><br />
+For security reasons our system only deliver if your character is offline at the time the payment is approved. But do not worry, if your character is found online at the time of delivery, a new delivery attempt will be performed automatically every hour, until your character is offline.<br /><br /><br />
+Disputes in payment sites, attempts to chargeback or fraudulent attitudes will not be tolerated. In such cases we will block their accounts and computers until the condition is evaluated and resolved, the lock may be permanent depending on the event.<br /><br />
+If problems arise in the automatic delivery, all you have to do is contact us. No contact before a period of 24 hours after confirmation of your payment.<br />
 ";
-$LANG[12110] = "Hello!<br /><br />There is an registered account on our server with your e-mail address.<br />Recently a request for password recovery was performed. If you made this request, click on the link below or copy and paste in the browser, otherwise ignore this e-mail.<br /><br />Account data:<br /><br />";
-$LANG[12111] = "Hello!<br /><br />There are some accounts on our server with your registered e-mail address.<br />Recently a request for password recovery was performed. If you made this request, click on the highlighted link their account you want to change the password or copy and paste in the browser, otherwise ignore this e-mail.<br /><br />Accounts data:<br /><br />";
-$LANG[12112] = "If you want to change the password of any accounts over at once, click the link below.";
-$LANG[12113] = "Hello!<br /><br />Your e-mail has been used in the registration of an account on our server. If you held this register, click the link below or copy and paste in the browser, otherwise ignore this e-mail.<br /><br />Account data:<br /><br />";
-$LANG[12114] = "Hello!<br /><br />There is an registered account on our server with your e-mail.<br />Recently a request for change of address was performed. If you made this request and agree that the account will be transferred to the new e-mail, click the link below or copy and paste in your browser, otherwise ignore this e-mail.<br /><br />";
+$LANG[14004] = "This name is already in use!";
+$LANG[15003] = "Bank transaction";
+$LANG[15004] = "After payment send the proof to";
+$LANG[15005] = "Deposit or transfer to the following bank account";
