@@ -1,422 +1,157 @@
 <?php
+if(!$indexing) { echo "<script>document.location.replace('./');</script>"; exit; }
 
 require('private/classes/classIndex.php');
 
-$countNews = Index::countNews(); $countNews = intval($countNews[0]['quant']);
-$countBanners = Index::countBanners(); $countBanners = intval($countBanners[0]['quant']);
-$countGallery = Index::countGallery(); $countGallery = intval($countGallery[0]['quant']);
-$countAccounts = Index::countAccounts(); $countAccounts = intval($countAccounts[0]['quant']);
-$countChars = Index::countChars(); $countChars = intval($countChars[0]['quant']);
-$countOnline = Index::countOnline(); $countOnline = intval($countOnline[0]['quant']);
-$countClans = Index::countClans(); $countClans = intval($countClans[0]['quant']);
-
-for($i=1, $c=12; $i <= $c; $i++) {
-	$reais[$i] = 0;
-	$dolares[$i] = 0;
-	$euros[$i] = 0;
-	$pendentes[$i] = 0;
-	$concluidas[$i] = 0;
-	$canceladas[$i] = 0;
-}
-
-$mes = 0; $inReais = 0; $inDolares = 0; $inEuros = 0; $percentReais = 0; $percentDolares = 0; $percentEuros = 0; $countPendentes = 0; $countConcluidas = 0; $countCanceladas = 0; $percentPendentes = 0; $percentConcluidas = 0; $percentCanceladas = 0;
-
-$donateYear = isset($_GET['donateYear']) ? intval($_GET['donateYear']) : date('Y');
-$perBegin = mktime(0, 0, 0, 1, 1, $donateYear);
-$perEnd = mktime(23, 59, 59, 12, 31, $donateYear);
-
-$donateMov = Index::donates($perBegin, $perEnd);
-if(count($donateMov) > 0) {
-	
-	for($i=0, $c=count($donateMov); $i < $c; $i++) {
-		
-		$mes = intval(date('m', $donateMov[$i]['data']));
-		
-		if($donateMov[$i]['status'] == '3' || $donateMov[$i]['status'] == '4') {
-		
-			$curr = trim($donateMov[$i]['currency']);
-			$valor = trim($donateMov[$i]['valor']);
-			
-			if($curr == 'BRL') { $reais[$mes] += $valor; $inReais += 1; }
-			if($curr == 'USD') { $dolares[$mes] += $valor; $inDolares += 1; }
-			if($curr == 'EUR') { $euros[$mes] += $valor; $inEuros += 1; }
-			
-			$countConcluidas += 1;
-			$concluidas[$mes] += 1;
-			
-		} else if($donateMov[$i]['status'] == '2') {
-			
-			$countCanceladas += 1;
-			$canceladas[$mes] += 1;
-			
-		} else {
-			
-			$countPendentes += 1;
-			$pendentes[$mes] += 1;
-			
-		}
-		
+$dirCache = 'cache/';
+$filesCache = glob("$dirCache{*.txt}", GLOB_BRACE);
+foreach($filesCache as $file){
+	if(filemtime($file) < (time()-86400)) {
+		unlink($file);
 	}
-	
 }
-
-if($countConcluidas > 0) {
-	$percentReais = round($inReais * 100 / $countConcluidas, 1);
-	$percentDolares = round($inDolares * 100 / $countConcluidas, 1);
-	$percentEuros = round($inEuros * 100 / $countConcluidas, 1);
-}
-
-if(count($donateMov) > 0) {
-	$percentPendentes = round($countPendentes * 100 / count($donateMov), 1);
-	$percentConcluidas = round($countConcluidas * 100 / count($donateMov), 1);
-	$percentCanceladas = round($countCanceladas * 100 / count($donateMov), 1);
-}
-
-$beginDonateYear = Index::beginDonateYear(); if(!empty($beginDonateYear[0]['data'])) { $beginDonateYear = date('Y', $beginDonateYear[0]['data']); } else { $beginDonateYear = date('Y'); }
 
 ?>
 
-<section class="content-header">
-	<h1>
-		Dashboard <small>Version 3.0</small>
-	</h1>
-	<ol class="breadcrumb">
-		<li><i class="fa fa-home"></i> Home</li>
-		<li class="active">Dashboard</li>
-	</ol>
-</section>
-
-<section class="content">
-	
-	<div class="row">
-		
-		<div class="col-lg-4 col-xs-6">
-			<div class="small-box bg-aqua">
-				<div class="inner">
-					<h3><?php echo $countNews; ?></h3>
-					<p>Notícias</p>
-				</div>
-				<div class="icon">
-					<i class="ion ion-ios-paper"></i>
-				</div>
-				<a href="?page=list&module=news" class="small-box-footer">Gerenciar <i class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		
-		<div class="col-lg-4 col-xs-6">
-			<div class="small-box bg-green">
-				<div class="inner">
-					<h3><?php echo $countBanners; ?></h3>
-					<p>Banners</p>
-				</div>
-				<div class="icon">
-					<i class="ion ion-easel"></i>
-				</div>
-				<a href="?page=list&module=banners" class="small-box-footer">Gerenciar <i class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		
-		<div class="col-lg-4 col-xs-6">
-			<div class="small-box bg-yellow">
-				<div class="inner">
-					<h3><?php echo $countGallery; ?></h3>
-					<p>Galeria</p>
-				</div>
-				<div class="icon">
-					<i class="ion ion-images"></i>
-				</div>
-				<a href="?page=list&module=gallery" class="small-box-footer">Gerenciar <i class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		
-	</div>
-	
-	<div class="row">
-		<div class="col-md-3 col-sm-6 col-xs-12">
-			<div class="info-box">
-				<span class="info-box-icon bg-aqua"><i class="fa fa-lock"></i></span>
-				<div class="info-box-content">
-					<span class="info-box-text">Accounts</span>
-					<span class="info-box-number"><?php echo $countAccounts; ?></span>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12">
-			<div class="info-box">
-				<span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
-				<div class="info-box-content">
-					<span class="info-box-text">Personagens</span>
-					<span class="info-box-number"><?php echo $countChars; ?></span>
-				</div>
-			</div>
-		</div>
-	
-		<!-- fix for small devices only -->
-		<div class="clearfix visible-sm-block"></div>
-	
-		<div class="col-md-3 col-sm-6 col-xs-12">
-			<div class="info-box">
-				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
-				<div class="info-box-content">
-					<span class="info-box-text">Online</span>
-					<span class="info-box-number"><?php echo $countOnline; ?></span>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12">
-			<div class="info-box">
-				<span class="info-box-icon bg-yellow"><i class="ion ion-ribbon-b"></i></span>
-				<div class="info-box-content">
-					<span class="info-box-text">Clans</span>
-					<span class="info-box-number"><?php echo $countClans; ?></span>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">
-						Gráficos de Doações
-						<select style='display:inline-block;' onchange='javascript:document.location.href="?donateYear="+this.value;'>
-							<?php
-							for($i=date('Y'), $c=$beginDonateYear; $i >= $c; $i--) {
-								echo "<option value='".$i."'".($donateYear == $i ? " selected" : "").">".$i."</option>";
-							}
-							?>
-						</select>
-					</h3>
-					<div style='float:right;'>
-						<a href='?page=list_relat&module=donate' class='btn btn-default'>Ver relatório &raquo;</a>
-					</div>
-				</div>
-				<div class="box-body">
-					<div class="row">
-						<div class="col-md-6">
-							<p class="text-center">
-								<strong>Valor movimentado</strong>
-							</p>
-							<div class="chart">
-								<canvas id="valChart" style="height: 180px;"></canvas>
-							</div>
-							<div class="box-footer">
-								<div class="row">
-									<div class="col-xs-4 text-center" style="border-right: 1px solid #dbdbdb" title="<?php echo $percentReais; ?>% das doações foram pagas em reais">
-										<input type="text" class="knob" data-readonly="true" value="<?php echo $percentReais; ?>" data-width="80" data-height="80" data-fgColor="#4f98c3">
-										<div class="knob-label">
-											% Reais (R$)
-											<div style='font-size:12px;font-weight:bold;'><?php echo $inReais; ?> doações</div>
-										</div>
-									</div>
-									<div class="col-xs-4 text-center" style="border-right: 1px solid #dbdbdb" title="<?php echo $percentDolares; ?>% das doações foram pagas em dólar">
-										<input type="text" class="knob" data-readonly="true" value="<?php echo $percentDolares; ?>" data-width="80" data-height="80" data-fgColor="#00a65a">
-										<div class="knob-label">
-											% Dolares ($)
-											<div style='font-size:12px;font-weight:bold;'><?php echo $inDolares; ?> doações</div>
-										</div>
-									</div>
-									<div class="col-xs-4 text-center" title="<?php echo $percentEuros; ?>% das doações foram pagas em euro">
-										<input type="text" class="knob" data-readonly="true" value="<?php echo $percentEuros; ?>" data-width="80" data-height="80" data-fgColor="#dd4b39">
-										<div class="knob-label">
-											% Euros (€)
-											<div style='font-size:12px;font-weight:bold;'><?php echo $inEuros; ?> doações</div>
-										</div>
-									</div>
-				
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<p class="text-center">
-								<strong>Quantidade de doações</strong>
-							</p>
-							<div class="chart">
-								<canvas id="quantChart" style="height: 180px;"></canvas>
-							</div>
-							<div class="box-footer">
-								<div class="row">
-									<div class="col-xs-4 text-center" style="border-right: 1px solid #dbdbdb">
-										<input type="text" class="knob" data-readonly="true" value="<?php echo $percentPendentes; ?>" data-width="80" data-height="80" data-fgColor="#4f98c3">
-										<div class="knob-label">
-											% Pendente
-											<div style='font-size:12px;font-weight:bold;'><?php echo $countPendentes; ?> doações</div>
-										</div>
-									</div>
-									<div class="col-xs-4 text-center" style="border-right: 1px solid #dbdbdb">
-										<input type="text" class="knob" data-readonly="true" value="<?php echo $percentConcluidas; ?>" data-width="80" data-height="80" data-fgColor="#00a65a">
-										<div class="knob-label">
-											% Concluída
-											<div style='font-size:12px;font-weight:bold;'><?php echo $countConcluidas; ?> doações</div>
-										</div>
-									</div>
-									<div class="col-xs-4 text-center">
-										<input type="text" class="knob" data-readonly="true" value="<?php echo $percentCanceladas; ?>" data-width="80" data-height="80" data-fgColor="#dd4b39">
-										<div class="knob-label">
-											% Cancelada
-											<div style='font-size:12px;font-weight:bold;'><?php echo $countCanceladas; ?> doações</div>
-										</div>
-									</div>
-				
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-
-<!-- ChartJS 1.0.1 -->
-<script src="layout/plugins/chartjs/Chart.min.js"></script>
-
-<!-- jQuery Knob Chart -->
-<script src="layout/plugins/knob/jquery.knob.js"></script>
-
-<script>
-	$(function () {
-		
-		"use strict";
-		
-		$(".knob").knob();
-		
-		var chartValores = $("#valChart").get(0).getContext("2d");
-		var valChart = new Chart(chartValores);
-		
-		var valChartData = {
-			labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-			datasets: [
-			{
-				label: "R$",
-				fillColor: "rgba(60,141,188,0.5)",
-				strokeColor: "rgba(60,141,188,0.8)",
-				pointColor: "#3b8bba",
-				pointStrokeColor: "rgba(60,141,188,0.8)",
-				pointHighlightFill: "#004d7a",
-				pointHighlightStroke: "#004d7a",
-				data: [<?php echo $reais[1].", ".$reais[2].", ".$reais[3].", ".$reais[4].", ".$reais[5].", ".$reais[6].", ".$reais[7].", ".$reais[8].", ".$reais[9].", ".$reais[10].", ".$reais[11].", ".$reais[12]; ?>]
-			},
-			{
-				label: "$",
-				fillColor: "rgba(0,189,102,0.5)",
-				strokeColor: "rgba(0,172,93,0.8)",
-				pointColor: "#00a65a",
-				pointStrokeColor: "rgba(0,122,66,0.8)",
-				pointHighlightFill: "#006034",
-				pointHighlightStroke: "#006034",
-				data: [<?php echo $dolares[1].", ".$dolares[2].", ".$dolares[3].", ".$dolares[4].", ".$dolares[5].", ".$dolares[6].", ".$dolares[7].", ".$dolares[8].", ".$dolares[9].", ".$dolares[10].", ".$dolares[11].", ".$dolares[12]; ?>]
-			},
-			{
-				label: "€",
-				fillColor: "rgba(221,75,57,0.5)",
-				strokeColor: "rgba(221,75,57,0.8)",
-				pointColor: "#dd4b39",
-				pointStrokeColor: "rgba(221,75,57,0.8)",
-				pointHighlightFill: "#941000",
-				pointHighlightStroke: "#941000",
-				data: [<?php echo $euros[1].", ".$euros[2].", ".$euros[3].", ".$euros[4].", ".$euros[5].", ".$euros[6].", ".$euros[7].", ".$euros[8].", ".$euros[9].", ".$euros[10].", ".$euros[11].", ".$euros[12]; ?>]
+<!-- Banners -->
+<script type='text/javascript'>
+$(document).ready(function(){
+	$('.banner > a:first-child').addClass('bvis');
+	$('.banner .circles div:first-child').addClass('act');
+	var rotateBannerAtualstudio = function() {
+		if($('input#tempBanner').val() == '1') {
+			var countA = $('.banner > a').length;
+			var relAtual = $('.banner > a.bvis').attr('rel');
+			var proxRel = parseInt(parseInt(relAtual)+1);
+			if(proxRel > countA) {
+				var proxRel = 1;
 			}
-			]
-		};
-	
-		var valChartOptions = {
-			showScale: true,
-			scaleShowGridLines: true,
-			scaleGridLineColor: "rgba(0,0,0,.1)",
-			scaleGridLineWidth: 1,
-			scaleShowHorizontalLines: true,
-			scaleShowVerticalLines: true,
-			bezierCurve: true,
-			bezierCurveTension: 0.3,
-			pointDot: true,
-			pointDotRadius: 4,
-			pointDotStrokeWidth: 1,
-			pointHitDetectionRadius: 20,
-			datasetStroke: true,
-			datasetStrokeWidth: 2,
-			datasetFill: true,
-			legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%=datasets[i].label%></li><%}%></ul>",
-			tooltipTemplate: "<%=label%>: <%=datasetLabel%> <%= value %>",
-			multiTooltipTemplate: "<%=datasetLabel%> <%= value %>",
-			maintainAspectRatio: true,
-			responsive: true
-		};
-	
-		valChart.Line(valChartData, valChartOptions);
-		
-		
-		
-		
-		
-		var chartQuant = $("#quantChart").get(0).getContext("2d");
-		var quantChart = new Chart(chartQuant);
-	
-		var quantChartData = {
-			labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-			datasets: [
-			{	
-				label: "Pendentes",
-				fillColor: "rgba(60,141,188,0.5)",
-				strokeColor: "rgba(60,141,188,0.8)",
-				pointColor: "#3b8bba",
-				pointStrokeColor: "rgba(60,141,188,0.8)",
-				pointHighlightFill: "#004d7a",
-				pointHighlightStroke: "#004d7a",
-				data: [<?php echo $pendentes[1].", ".$pendentes[2].", ".$pendentes[3].", ".$pendentes[4].", ".$pendentes[5].", ".$pendentes[6].", ".$pendentes[7].", ".$pendentes[8].", ".$pendentes[9].", ".$pendentes[10].", ".$pendentes[11].", ".$pendentes[12]; ?>]
-			},
-			{	
-				label: "Concluídas",
-				fillColor: "rgba(0,189,102,0.5)",
-				strokeColor: "rgba(0,172,93,0.8)",
-				pointColor: "#00a65a",
-				pointStrokeColor: "rgba(0,122,66,0.8)",
-				pointHighlightFill: "#006034",
-				pointHighlightStroke: "#006034",
-				data: [<?php echo $concluidas[1].", ".$concluidas[2].", ".$concluidas[3].", ".$concluidas[4].", ".$concluidas[5].", ".$concluidas[6].", ".$concluidas[7].", ".$concluidas[8].", ".$concluidas[9].", ".$concluidas[10].", ".$concluidas[11].", ".$concluidas[12]; ?>]
-			},
-			{	
-				label: "Canceladas",
-				fillColor: "rgba(221,75,57,0.5)",
-				strokeColor: "rgba(221,75,57,0.8)",
-				pointColor: "#dd4b39",
-				pointStrokeColor: "rgba(221,75,57,0.8)",
-				pointHighlightFill: "#941000",
-				pointHighlightStroke: "#941000",
-				data: [<?php echo $canceladas[1].", ".$canceladas[2].", ".$canceladas[3].", ".$canceladas[4].", ".$canceladas[5].", ".$canceladas[6].", ".$canceladas[7].", ".$canceladas[8].", ".$canceladas[9].", ".$canceladas[10].", ".$canceladas[11].", ".$canceladas[12]; ?>]
-			}
-			]
-		};
-	
-		var quantChartOptions = {
-			showScale: true,
-			scaleShowGridLines: true,
-			scaleGridLineColor: "rgba(0,0,0,.1)",
-			scaleGridLineWidth: 1,
-			scaleShowHorizontalLines: true,
-			scaleShowVerticalLines: true,
-			bezierCurve: true,
-			bezierCurveTension: 0.3,
-			pointDot: true,
-			pointDotRadius: 4,
-			pointDotStrokeWidth: 1,
-			pointHitDetectionRadius: 20,
-			datasetStroke: true,
-			datasetStrokeWidth: 2,
-			datasetFill: true,
-			legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%=datasets[i].label%></li><%}%></ul>",
-			tooltipTemplate: "<%=label%>: <%=datasetLabel%>: <%= value %>",
-			multiTooltipTemplate: "<%=datasetLabel%>: <%= value %>",
-			maintainAspectRatio: true,
-			responsive: true
-		};
-	
-		quantChart.Line(quantChartData, quantChartOptions);
-		
-		
+			$('.banner > a').removeClass('bvis');
+			$('.banner > a[rel='+proxRel+']').addClass('bvis');
+			$('.banner .circles div').removeClass('act');
+			$('.banner .circles div[rel='+proxRel+']').addClass('act');
+		}
+		  setTimeout(rotateBannerAtualstudio, <?php echo ((isset($bannerDelay) ? intval(trim($bannerDelay)) : 3) * 1000); ?>);
+	}
+	setTimeout(rotateBannerAtualstudio, <?php echo ((isset($bannerDelay) ? intval(trim($bannerDelay)) : 3) * 1000); ?>);
+	$('.banner').hover(function(){
+		$('input#tempBanner').val('2');
+	}, function(){
+		$('input#tempBanner').val('1');
 	});
+	$('.circles div').hover(function(){
+		var relCircle = $(this).attr('rel');
+		$('.banner .circles div').removeClass('act');
+		$(this).addClass('act');
+		$('.banner > a').removeClass('bvis');
+		$('.banner > a[rel='+relCircle+']').addClass('bvis');
+	});
+});
 </script>
+<style>
+	.banner, .banner > .imgs a, .banner > .imgs a img, .banner .bdetail { width: <?php echo $bnWidth; ?>px !important; height: <?php echo $bnHeight; ?>px !important; }
+</style>
+<?php
+$banners = Index::Banners();
+$countBanners = count($banners);
+if($countBanners > 0) { ?>
+<div class='banner'>
+	<div class='circles'<?php echo ($countBanners == 1 ? "style='display:none;'" : "")?>>
+		<?php for($i=1; $i <= $countBanners; $i++) {
+			if($i=='1') {
+				echo "<div rel='$i' class='act'></div>";
+			} else {
+				echo "<div rel='$i'></div>";
+			}
+		} ?>
+	</div>
+	<?php for($i=1, $ii=0; $i <= $countBanners; $i++, $ii++) {
+		$bannerPT = trim($banners[$ii]['imgurl_pt']);
+		$bannerEN = trim($banners[$ii]['imgurl_en']);
+		$bannerES = trim($banners[$ii]['imgurl_es']);
+		echo "
+		<a rel='".$i."' href='".$banners[$ii]['link']."'".($banners[$ii]['target'] == '1' ? " target='_blank'" : "").($i == '1' ? " class='bvis'" : "").">
+			<div class='bmask'></div>
+			<img src='".($language == 'en' && strlen($bannerEN) > 0 ? ($dir_banners.$bannerEN) : ($language == 'es' && strlen($bannerES) > 0 ? ($dir_banners.$bannerES) : ($dir_banners.$bannerPT) ) )."' />
+		</a>";
+	} ?>
+	<input type='hidden' id='tempBanner' value='1' />
+</div>
 
+<hr />
+<?php } ?>
+
+
+
+<!-- Countdown INI -->
+<?php if($counterActived == 1) { $inauguracao = mktime($cHor,$cMin,0,$cMes,$cDia,$cAno); if(time() < $inauguracao) { ?>
+<h1><?php echo $LANG[10999]; ?></h1>
+<div style="font-size: 24px; text-align:center; padding: 0 0 0 25px;">
+	<?php echo $cDia." ".date('F', $inauguracao).", ".$cAno." &bullet; ".$cHor.":".$cMin; ?> <span style='font-size:11px; font-weight:bold; font-style:italic; vertical-align: super;'>(UTC <?php echo $cGMT; ?>)</span>
+</div>
+<link href="css/soon.min.css" rel="stylesheet" />
+<div class="atualstudioCountdown">
+	<style>
+		@import url(http://fonts.googleapis.com/css?family=Quicksand);
+		#soon-glow { font-family: 'Quicksand', sans-serif; color: #000; background: transparent; text-transform:lowercase; }
+		#soon-glow .soon-label { color: #000; text-shadow:0 0 .25rem rgba(0,0,0,.75); }
+		#soon-glow .soon-ring-progress { color: #000; background-color:rgba(0,0,0,.15); }
+		#soon-glow>.soon-group { margin-bottom:-.5em; }
+		.soon[data-layout*="group"] { padding-top: 20px; }
+		.soon[data-face*="glow"] .soon-separator, .soon[data-face*="glow"] .soon-slot-inner { text-shadow: 0 0 .125em rgba(0,0,0,.75); }
+	</style>
+	<div class="soon" id="soon-glow" data-layout="group overlap" data-face="slot doctor glow" data-padding="false" data-scale-max="l" data-visual="ring color-light width-thin glow-progress length-70 gap-0 offset-65"></div>
+</div>
+<script>(function(){ var i=0,soons = document.querySelectorAll('.atualstudioCountdown .soon'),l=soons.length; for(;i<l;i++) { soons[i].setAttribute('data-due','<?php echo date("Y-m-d\TH:i:s", mktime(($cHor+$sumH), $cMin, 0, $cMes, $cDia, $cAno)); ?>'); soons[i].setAttribute('data-now','<?php echo date("Y-m-d\TH:i:s"); ?>'); } }());</script>
+<script src="js/soon.min.js" data-auto="false"></script><script>var soons = document.querySelectorAll('.atualstudioCountdown .soon'); for(var i=0;i<soons.length;i++) { Soon.create(soons[i]); }</script>
+
+<?php } } ?>
+<!-- Countdown  FIM -->
+
+<!-- News -->
+<h1><?php echo $LANG[13001]; ?> <a href='?page=news&id=all'><?php echo $LANG[12027]; ?> &raquo;</a></h1>
+<?php
+$news = Index::News(0, $inewsCount);
+$totalNews = count($news);
+if($totalNews > 0) {
+	for($i=0; $i < $totalNews; $i++) {
+		$newsImage = ((strlen(trim($news[$i]['img'])) > 0) ? (file_exists($dir_newsimg.trim($news[$i]['img'])) ? $dir_newsimg.trim($news[$i]['img']) : 'imgs/nm/no-img-new.jpg') : 'imgs/nm/no-img-new.jpg');
+		$newTxt = strip_tags(($language == 'en' && strlen(trim($news[$i]['content_en'])) > 0 ? trim($news[$i]['content_en']) : ($language == 'es' && strlen(trim($news[$i]['content_es'])) > 0 ? trim($news[$i]['content_es']) : trim($news[$i]['content_pt']))));
+		$newTitle = ($language == 'en' && strlen(trim($news[$i]['title_en'])) > 0 ? trim($news[$i]['title_en']) : ($language == 'es' && strlen(trim($news[$i]['title_es'])) > 0 ? trim($news[$i]['title_es']) : $news[$i]['title_pt']));
+		echo "
+		<div class='news'>
+			<a class='imgn' href='./?page=news&id=".$news[$i]['nid']."'><img src='".$newsImage."' /></a>
+			<div class='contentn'>
+				<a href='./?page=news&id=".$news[$i]['nid']."' class='titlen'>".$newTitle."</a>
+				<div class='textn'>
+					".(trim(substr($newTxt, 0, 180)).(strlen($newTxt) > 180 ? '...' : ''))."
+				</div>
+				<div class='finalinfo'>
+					<div class='datan'>".date('d F, Y', $news[$i]['post_date'])."</div>
+					<div class='lermaisn'><a href='./?page=news&id=".$news[$i]['nid']."'>".$LANG[12991]." &raquo;</a></div>
+				</div>
+			</div>
+		</div>
+		".(($totalNews-1) != $i ? "<div class='shadownew stpPNG'></div>" : "");
+	}
+} else {
+	echo "<div style='text-align:center;'><b>".$LANG[12063]."</b></div>";
+}
+?>
+
+
+
+<!-- Facebook Box -->
+<?php if($faceBoxOn == 1) { ?>
+	<hr />
+	<h1><?php echo $LANG[29002]; ?></h1>
+	<div class='pddInner'>
+		<?php echo $LANG[12998]; ?>
+	</div>
+	<style>
+		.faceIndex { width: <?php echo $fbWidth; ?>px !important; }
+	</style>
+	<div class='faceIndex'>
+		<div class="fb-page" data-href="<?php echo $facePage; ?>" data-width="<?php echo $fbWidth; ?>" data-height="<?php echo $fbHeight; ?>" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="<?php echo $facePage; ?>"><a href="<?php echo $facePage; ?>"></a></blockquote></div></div>
+	</div>
+<?php } ?>
